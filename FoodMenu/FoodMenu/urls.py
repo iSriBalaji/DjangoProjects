@@ -17,8 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from django.http import HttpResponse
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('menu/', include('TheMenu.urls')),
+    path('users/', include('users.urls')),
+    # path('/', HttpResponse("Welcome to Home Page!")),
 ]

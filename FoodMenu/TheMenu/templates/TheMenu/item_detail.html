@@ -1,0 +1,27 @@
+{% extends 'TheMenu/base.html' %}
+{% block body %}
+<div class="container mt-5">
+    <div class="card shadow-lg" style="max-width: 800px; margin: auto;">
+        <div class="row g-0">
+            <!-- Image Section -->
+            <div class="col-md-5 p-4">
+                <img src="{{ menu_item.item_image }}" class="img-fluid rounded-start" alt="{{ menu_item.description }}" style="height: 100%; object-fit: cover; max-height: 250px;">
+            </div>
+            <!-- Content Section -->
+            <div class="col-md-7">
+                <div class="card-body p-4">
+                    <h3 class="card-title text-primary fw-bold">{{ menu_item.item }}</h3>
+                    <h5 class="text-success fw-bold mb-3">${{ menu_item.price }}</h5>
+                    <p class="card-text text-muted">{{ menu_item.description }}</p>
+                    <div class="mt-4">
+                        <a href="#" class="btn btn-primary btn-md">Order Now</a>
+                        <!-- <a href="{% url 'menu:index' %}" class="btn btn-outline-secondary btn-md ms-2">Back to Menu</a> -->
+                        <a href="{% url 'menu:update_item' menu_item.id %}" class="btn btn-success btn-md ms-2">Update</a>
+                        <a href="{% url 'menu:delete_item' menu_item.id %}" class="btn btn-danger btn-md ms-2">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
