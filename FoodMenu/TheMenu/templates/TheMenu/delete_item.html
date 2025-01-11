@@ -1,0 +1,29 @@
+{% extends 'TheMenu/base.html' %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <!-- Confirmation Card -->
+            <div class="card shadow-sm">
+                <div class="card-header bg-danger text-white text-center">
+                    <h4 class="mb-0">Confirmation</h4>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="mb-3">Are you sure you want to delete the item <strong>{{ item_details.item }}</strong>?</h5>
+                    <p class="mb-4 text-secondary">This action is irreversible!</p>
+                    <form method="POST" action="{% url 'menu:delete_item' item_details.id %}">
+                        {% csrf_token %}
+                        <div class="d-flex justify-content-center">
+                            <!-- Cancel Button: Returns to the item detail page -->
+                            <a href="{% url 'menu:index' %}" class="btn btn-outline-secondary btn-lg me-3">Cancel</a>
+                            <!-- Delete Button: Confirms the deletion -->
+                            <button type="submit" class="btn btn-danger btn-lg">{{ form_type }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

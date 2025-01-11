@@ -1,0 +1,52 @@
+{% extends 'TheMenu/base.html' %}
+{% block body %}
+<!-- Page Content -->
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Add New Item</h2>
+    <form method="POST" class="bg-light p-4 rounded shadow-sm">
+        {% csrf_token %}
+        
+        <!-- Form Fields in 4x4 Grid Layout -->
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <label for="item" class="form-label">Item Name</label>
+            </div>
+            <div class="col-md-9">
+                <input type="text" name="item" id="item" class="form-control" value="{{ add_form.item.value }}">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <label for="price" class="form-label">Price</label>
+            </div>
+            <div class="col-md-9">
+                <input type="number" name="price" id="price" class="form-control" value="{{ add_form.price.value }}">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <label for="description" class="form-label">Description</label>
+            </div>
+            <div class="col-md-9">
+                <textarea name="description" id="description" class="form-control">{{ add_form.description.value }}</textarea>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <label for="item_image" class="form-label">Item Image URL</label>
+            </div>
+            <div class="col-md-9">
+                <input type="url" name="item_image" id="item_image" class="form-control" value="{{ add_form.item_image.value }}">
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary btn-lg">{{form_type}}</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
