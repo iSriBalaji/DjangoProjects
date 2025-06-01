@@ -13,6 +13,7 @@
                         <h6 class="card-title fw-bold text-primary mb-2">{{ item.item }}</h6>
                     </a>
                     <p class="card-text text-muted small mb-1">{{ item.description }}</p>
+                    <span class="badge text-white small" style="background: linear-gradient(to right, #7f00ff, #e100ff);">Added by: @{{ item.user_name }}</span>
                 </div>
                 <div class="card-footer d-flex justify-content-between align-items-center p-2">
                     <span class="fw-bold text-success small">Price: ${{ item.price|floatformat:2 }}</span>

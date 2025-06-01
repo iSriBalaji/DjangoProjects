@@ -18,10 +18,22 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include
 from django.http import HttpResponse
+from django.contrib.auth import views as auth_views
+from users.views import user_logout, register, profilepage
+from django.conf import settings
+from django.conf.urls.static import static # to use the static files - we used it for displating profile image
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('menu/', include('TheMenu.urls')),
-    path('users/', include('users.urls')),
+    path('', include('TheMenu.urls')),
+    path('register/', register, name='register'),
+    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'), # this is a class based view
+    path('logout/', user_logout, name='logout'),
+    path('profile/', profilepage, name='profile'),
     # path('/', HttpResponse("Welcome to Home Page!")),
 ]
+
+urlpatterns += [
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)   # when i changed to media url and media root it worked
