@@ -1,5 +1,32 @@
-<form method="POST">
-    {% csrf_token %}
-    {{form}}
-    <button type="submit">Register</button>
-</form>
+{% extends 'TheMenu/base.html' %}
+{% block body %}
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f9f9f9;">
+    <div style="background: #ffffff; padding: 2rem 2.5rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); width: 100%; max-width: 500px;">
+        <h2 style="text-align: center; color: #333; font-family: 'Segoe UI', sans-serif; margin-bottom: 1.5rem;">
+            Create an Account
+        </h2>
+        <form method="POST" style="display: flex; flex-direction: column; gap: 1.2rem;">
+            {% csrf_token %}
+            {% for field in form %}
+                <div style="display: flex; flex-direction: column;">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.help_text %}
+                        <small style="color: #666; font-size: 0.8rem;">{{ field.help_text|safe }}</small>
+                    {% endif %}
+                    {% for error in field.errors %}
+                        <span style="color: red; font-size: 0.8rem;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <button type="submit" style="background-color: #28a745; color: white; padding: 0.75rem; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer;">
+                Register
+            </button>
+        </form>
+        <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #666;">
+            Already have an account?
+            <a href="{% url 'login' %}" style="color: #007bff; text-decoration: none;">Log in</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

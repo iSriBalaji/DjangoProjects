@@ -3,7 +3,7 @@
 <!-- Page Content -->
 <div class="container mt-5">
     <h2 class="text-center mb-4">Add New Item</h2>
-    <form method="POST" class="bg-light p-4 rounded shadow-sm">
+    <form method="POST" enctype="multipart/form-data" class="bg-light p-4 rounded shadow-sm">
         {% csrf_token %}
         
         <!-- Form Fields in 4x4 Grid Layout -->
@@ -39,7 +39,7 @@
                 <label for="item_image" class="form-label">Item Image URL</label>
             </div>
             <div class="col-md-9">
-                <input type="url" name="item_image" id="item_image" class="form-control" value="{{ add_form.item_image.value }}">
+                <input type="file" name="item_image" id="item_image" class="form-control">
             </div>
         </div>
 

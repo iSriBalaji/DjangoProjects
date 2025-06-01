@@ -1,0 +1,136 @@
+{% extends 'TheMenu/base.html' %}
+{% block body %}
+<div class="profile-page">
+  <div class="profile-container">
+    <h2>Profile Details</h2>
+    <div class="profile-card">
+      <div class="profile-image-wrapper">
+        <img src="{{ user.profile.image.url }}" alt="Profile Image" />
+      </div>
+      <ul class="profile-details">
+        <li><strong>Username:</strong> {{ user.username }}</li>
+        <li><strong>Email:</strong> {{ user.email }}</li>
+        <li><strong>First Name:</strong> {{ user.first_name }}</li>
+        <li><strong>Last Name:</strong> {{ user.last_name }}</li>
+        <li><strong>Date Joined:</strong> {{ user.date_joined|date:"F j, Y" }}</li>
+        <li><strong>Location:</strong> {{ user.profile.location }}</li>
+      </ul>
+    </div>
+    <a href="{% url 'menu:index' %}" class="btn">Go to Home</a>
+  </div>
+</div>
+
+<style>
+  /* Scope everything inside .profile-page to avoid conflicts */
+
+  .profile-page .profile-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 40px auto;
+    max-width: 450px;
+    padding: 30px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    box-shadow: 0 10px 30px rgba(38, 50, 56, 0.4);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-page .profile-container h2 {
+    font-weight: 700;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    letter-spacing: 1.2px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  }
+
+  .profile-page .profile-card {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 15px;
+    padding: 25px 30px;
+    width: 100%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-page .profile-image-wrapper {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+  }
+
+  .profile-page .profile-image-wrapper:hover {
+    transform: scale(1.05);
+  }
+
+  .profile-page .profile-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .profile-page .profile-details {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .profile-page .profile-details li {
+    font-size: 1.1rem;
+    margin: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .profile-page .profile-details strong {
+    font-weight: 700;
+    color: #f0e9ff;
+    flex-basis: 45%;
+  }
+
+  .profile-page .btn {
+    margin-top: 30px;
+    background: #fff;
+    color: #2575fc;
+    font-weight: 600;
+    padding: 12px 30px;
+    border-radius: 40px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.7);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    user-select: none;
+  }
+
+  .profile-page .btn:hover {
+    background-color: #2575fc;
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(37, 117, 252, 0.6);
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 500px) {
+    .profile-page .profile-container {
+      margin: 20px;
+      padding: 20px;
+    }
+    .profile-page .profile-card {
+      padding: 20px;
+    }
+    .profile-page .profile-details li {
+      font-size: 1rem;
+    }
+  }
+</style>
+{% endblock %}

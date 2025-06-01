@@ -1,0 +1,83 @@
+{% extends 'TheMenu/base.html' %}
+{% block body %}
+
+<div class="logout-page">
+  <div class="logout-container">
+    <h1>You have been logged out</h1>
+    <p>Thank you for visiting! Hope to see you again soon.</p>
+    <a href="{% url 'menu:index' %}" class="btn">Return to Home</a>
+  </div>
+</div>
+
+<style>
+  /* Scoped styles to avoid conflicts */
+
+  .logout-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    background: linear-gradient(135deg, #ff6a00 0%, #ee0979 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .logout-page .logout-container {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    max-width: 450px;
+    width: 100%;
+  }
+
+  .logout-page h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    letter-spacing: 1.5px;
+    text-shadow: 0 3px 7px rgba(0,0,0,0.4);
+  }
+
+  .logout-page p {
+    font-size: 1.2rem;
+    margin-bottom: 35px;
+    color: #ffe6f0;
+    font-weight: 500;
+  }
+
+  .logout-page .btn {
+    display: inline-block;
+    background: #fff;
+    color: #ee0979;
+    font-weight: 700;
+    padding: 14px 40px;
+    border-radius: 40px;
+    text-decoration: none;
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.8);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    user-select: none;
+  }
+
+  .logout-page .btn:hover {
+    background-color: #ee0979;
+    color: #fff;
+    box-shadow: 0 8px 30px rgba(238, 9, 121, 0.8);
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 480px) {
+    .logout-page h1 {
+      font-size: 2.2rem;
+    }
+    .logout-page p {
+      font-size: 1rem;
+    }
+    .logout-page .logout-container {
+      padding: 30px 25px;
+    }
+  }
+</style>
+
+{% endblock %}
